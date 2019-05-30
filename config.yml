@@ -1,19 +1,63 @@
 Knight:
   Health: 150
   Weapons:
-    1: Basic Sword
-    2: Advanced Sword
-    3: Katana
-    4: Arondight
-    5: Balmung
-    6: Excalibur
+    1:
+      name: Basic Sword
+      damage: 20
+    2:
+      name: Advanced Sword
+      damage: 30
+    3:
+      name: Katana
+      damage: 40
+    4:
+      name: Arondight
+      damage: 50
+    5:
+      name: Balmung
+      damage: 60
+    6:
+      name: Excalibur
+      damage: 70
 Archer:
   Health: 80
   Weapons:
-    1: Basic Bow
-    2: Advanced Bow
-    3: Crossbow
-    4: Belthronding
-    5: Robin Hood's Bow
+    1:
+      name: Basic Bow
+      damage: 20
+    2:
+      name: Advanced Bow
+      damage: 30
+    3:
+      name: Crossbow
+      damage: 40
+    4:
+      name: Belthronding
+      damage: 50
+    5:
+      name: Rambo's Bow
+      damage: 60
+    6:
+      name: Robin Hood's Bow
+      damage: 70
 Magician:
   Health: 100
+  Weapons:
+    1:
+      name: Basic Wand
+      damage: 20
+    2:
+      name: Advanced Wand
+      damage: 30
+    3:
+      name: Element Wand
+      damage: 40
+    4:
+      name: Harry's Wand
+      damage: 50
+    5:
+      name: Dumbledore's Wand
+      damage: 60
+    6:
+      name: Gandalf's Wand
+      damage: 70
