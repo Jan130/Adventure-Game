@@ -1,6 +1,19 @@
 Knight:
   Health: 150
+  Weapons:
+    1: Basic Sword
+    2: Advanced Sword
+    3: Katana
+    4: Arondight
+    5: Balmung
+    6: Excalibur
 Archer:
   Health: 80
+  Weapons:
+    1: Basic Bow
+    2: Advanced Bow
+    3: Crossbow
+    4: Belthronding
+    5: Robin Hood's Bow
 Magician:
   Health: 100
