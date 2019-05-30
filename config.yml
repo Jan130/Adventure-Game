@@ -1,0 +1,6 @@
+Knight:
+  Health: 150
+Archer:
+  Health: 80
+Magician:
+  Health: 100
