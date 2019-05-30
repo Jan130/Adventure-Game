@@ -1,5 +1,6 @@
 import Parser
 import Weapon
+import pygame
 
 #jobs:
 #1: knight
@@ -14,6 +15,10 @@ class Player:
         self.weapon = weapon
         self.job = job
         self.pos = pos
+
+    def attack(self, player):
+        if pygame.math.Vector2.distance_to(self.pos, player.pos) <= 20:
+            player.health -= self.weapon.damage
 
 class Knight(Player):
     def __init__(self, filename, name, pos):

@@ -1,19 +1,16 @@
-import Player
-
 class Weapon:
-    def __init__(self, name, damage, ownerJob):
+    def __init__(self, name, damage):
         self.name = name
         self.damage = damage
-        self.ownerJob = ownerJob
 
 class Sword(Weapon):
     def __init__(self, name, damage):
-        super().__init__(name, damage, Player.Knight)
+        super().__init__(name, damage)
 
 class Bow(Weapon):
     def __init__(self, name, damage):
-        super().__init__(name, damage, Player.Archer)
+        super().__init__(name, damage)
 
 class Wand(Weapon):
     def __init__(self, name, damage):
-        super().__init__(name, damage, Player.Magician)
+        super().__init__(name, damage)

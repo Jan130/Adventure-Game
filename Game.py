@@ -1,9 +1,14 @@
 import Player
+import pygame
 
 config = "config.yml"
 
 def main():
-    player = Player.Knight(config, "King Arthur")
+    player = Player.Knight(config, "King Arthur", pygame.math.Vector2(0, 0))
+    player2 = Player.Archer(config, "Robin Hood", pygame.math.Vector2(10, 10))
+
+    player.attack(player2)
+    print(player2.health)
 
 
 if __name__ == "__main__":
