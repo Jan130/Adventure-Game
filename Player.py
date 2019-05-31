@@ -1,6 +1,7 @@
 import Parser
 import Weapon
 import pygame
+import random
 
 #jobs:
 #1: knight
@@ -14,12 +15,18 @@ class Player:
         self.level = level
         self.weapon = weapon
         self.job = job
-        self.pos = pygame.math.Vector2(pos)
+        self.pos = pos
+        self.radius = 20
+        self.color = (random.randint(0, 250), random.randint(0, 250), random.randint(0, 250))
 
     def attack(self, player):
         if pygame.math.Vector2.distance_to(self.pos, player.pos) <= 20:
             player.health -= self.weapon.damage
             print(self.name + "(" + str(self.health) + ")" + " --" + str(self.weapon.damage) + "-> " + player.name + "(" + str(player.health) + ")")
+
+    def render(self, screen):
+        pygame.draw.circle(screen, self.color, self.pos, self.radius)
+
 
 class Knight(Player):
     def __init__(self, filename, name, pos):
