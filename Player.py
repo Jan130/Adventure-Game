@@ -14,11 +14,12 @@ class Player:
         self.level = level
         self.weapon = weapon
         self.job = job
-        self.pos = pos
+        self.pos = pygame.math.Vector2(pos)
 
     def attack(self, player):
         if pygame.math.Vector2.distance_to(self.pos, player.pos) <= 20:
             player.health -= self.weapon.damage
+            print(self.name + "(" + str(self.health) + ")" + " --" + str(self.weapon.damage) + "-> " + player.name + "(" + str(player.health) + ")")
 
 class Knight(Player):
     def __init__(self, filename, name, pos):

@@ -4,8 +4,8 @@ import pygame
 config = "config.yml"
 
 def main():
-    player = Player.Knight(config, "King Arthur", pygame.math.Vector2(0, 0))
-    player2 = Player.Archer(config, "Robin Hood", pygame.math.Vector2(10, 10))
+    player = Player.Knight(config, "King Arthur", (0, 0))
+    player2 = Player.Archer(config, "Robin Hood", (10, 10))
 
     player.attack(player2)
     print(player2.health)
