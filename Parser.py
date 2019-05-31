@@ -6,12 +6,26 @@ def get_config(filename):
 
 def get_health(filename, job):
     input = get_config(filename)
-    return input[job]["Health"]
+    return input["Jobs"][job]["Health"]
 
 def get_weapon_name(filename, job, level):
     input = get_config(filename)
-    return input[job]["Weapons"][level]["name"]
+    return input["Jobs"][job]["Weapons"][level]["name"]
 
 def get_weapon_damage(filename, job, level):
     input = get_config(filename)
-    return input[job]["Weapons"][level]["damage"]
+    return input["Jobs"][job]["Weapons"][level]["damage"]
+
+def get_screen_width(filename):
+    input = get_config(filename)
+    return input["Screen"]["Width"]
+
+def get_screen_height(filename):
+    input = get_config(filename)
+    return input["Screen"]["Height"]
+
+def get_keys(filename):
+    input = get_config(filename)
+    for key in input["Keys"]:
+        input["Keys"][key] = "K_" + input["Keys"][key]
+    return input["Keys"]

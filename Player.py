@@ -18,6 +18,7 @@ class Player:
         self.pos = pos
         self.radius = 20
         self.color = (random.randint(0, 250), random.randint(0, 250), random.randint(0, 250))
+        self.speed = 5
 
     def attack(self, player):
         if pygame.math.Vector2.distance_to(self.pos, player.pos) <= 20:
@@ -27,6 +28,25 @@ class Player:
     def render(self, screen):
         pygame.draw.circle(screen, self.color, self.pos, self.radius)
 
+    def handleKey(self, key, keys):
+        if key is getattr(pygame, keys["up"]):
+            self.move("U")
+        if key is getattr(pygame, keys["down"]):
+            self.move("D")
+        if key is getattr(pygame, keys["left"]):
+            self.move("L")
+        if key is getattr(pygame, keys["right"]):
+            self.move("R")
+
+    def move(self, direction):
+        if direction is "U":
+            self.pos[1] -= self.speed
+        if direction is "D":
+            self.pos[1] += self.speed
+        if direction is "L":
+            self.pos[0] -= self.speed
+        if direction is "R":
+            self.pos[0] += self.speed
 
 class Knight(Player):
     def __init__(self, filename, name, pos):
