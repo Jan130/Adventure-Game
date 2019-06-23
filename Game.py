@@ -35,7 +35,7 @@ def main():
                 if event.key == pygame.K_ESCAPE:
                     pygame.event.post(pygame.event.Event(pygame.QUIT))
                 else:
-                    players[0].handleKey(event.key, keys)
+                    players[0].handleKey(event.key, keys, players)
 
 
 
