@@ -14,6 +14,11 @@ def main():
     pygame.key.set_repeat(1, 30)
 
     player = Player.Archer(config, "Test Archer", [400, 300])
+    player2 = Player.Knight(config, "Test Knight", [100, 100])
+
+    players = [player, player2]
+
+
 
     keys = Parser.get_keys(config)
 
@@ -30,10 +35,14 @@ def main():
                 if event.key == pygame.K_ESCAPE:
                     pygame.event.post(pygame.event.Event(pygame.QUIT))
                 else:
-                    player.handleKey(event.key, keys)
+                    players[0].handleKey(event.key, keys)
+
+
 
         screen.fill((255, 255, 255))
-        player.render(screen)
+
+        for pl in players:
+            pl.update(screen)
 
         pygame.display.flip()
 

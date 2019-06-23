@@ -28,25 +28,37 @@ class Player:
     def render(self, screen):
         pygame.draw.circle(screen, self.color, self.pos, self.radius)
 
-    def handleKey(self, key, keys):
+    def handleKey(self, key, keys, filename = 'config.yml'):
         if key is getattr(pygame, keys["up"]):
-            self.move("U")
+            self.move("U", filename)
         if key is getattr(pygame, keys["down"]):
-            self.move("D")
+            self.move("D", filename)
         if key is getattr(pygame, keys["left"]):
-            self.move("L")
+            self.move("L", filename)
         if key is getattr(pygame, keys["right"]):
-            self.move("R")
+            self.move("R", filename)
 
-    def move(self, direction):
+    def move(self, direction, filename):
         if direction is "U":
-            self.pos[1] -= self.speed
+            if (self.pos[1] - self.speed) >= 0:
+                self.pos[1] -= self.speed
         if direction is "D":
-            self.pos[1] += self.speed
+            if (self.pos[1] + self.speed) <= Parser.get_screen_height(filename):
+                self.pos[1] += self.speed
         if direction is "L":
-            self.pos[0] -= self.speed
+            if (self.pos[0] - self.speed) >= 0:
+                self.pos[0] -= self.speed
         if direction is "R":
-            self.pos[0] += self.speed
+            if (self.pos[0] + self.speed) <= Parser.get_screen_width(filename):
+                self.pos[0] += self.speed
+
+    def die(self):
+        self.color = (255, 255, 255)
+
+    def update(self, screen):
+        if self.health <= 0:
+            self.die()
+        self.render(screen)
 
 class Knight(Player):
     def __init__(self, filename, name, pos):
