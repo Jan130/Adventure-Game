@@ -29,3 +29,7 @@ def get_keys(filename):
     for key in input["Keys"]:
         input["Keys"][key] = "K_" + input["Keys"][key]
     return input["Keys"]
+
+def get_range(filename, job):
+    input = get_config(filename)
+    return input["Jobs"][job]["Range"]

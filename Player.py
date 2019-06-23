@@ -9,7 +9,7 @@ import random
 #3: magician
 
 class Player:
-    def __init__(self, name, health, level, weapon, job, pos):
+    def __init__(self, name, health, level, weapon, job, pos, mode = "auto"):
         self.name = name
         self.health = health
         self.level = level
@@ -19,24 +19,33 @@ class Player:
         self.radius = 20
         self.color = (random.randint(0, 250), random.randint(0, 250), random.randint(0, 250))
         self.speed = 5
+        self.alive = True
+        self.mode = mode
 
     def attack(self, player):
-        if pygame.math.Vector2.distance_to(self.pos, player.pos) <= 20:
-            player.health -= self.weapon.damage
-            print(self.name + "(" + str(self.health) + ")" + " --" + str(self.weapon.damage) + "-> " + player.name + "(" + str(player.health) + ")")
+        player.health -= self.weapon.damage
+        print(self.name + "(" + str(self.health) + ")" + " --" + str(self.weapon.damage) + "-> " + player.name + "(" + str(player.health) + ")")
 
     def render(self, screen):
         pygame.draw.circle(screen, self.color, self.pos, self.radius)
 
-    def handleKey(self, key, keys, filename = 'config.yml'):
-        if key is getattr(pygame, keys["up"]):
-            self.move("U", filename)
-        if key is getattr(pygame, keys["down"]):
-            self.move("D", filename)
-        if key is getattr(pygame, keys["left"]):
-            self.move("L", filename)
-        if key is getattr(pygame, keys["right"]):
-            self.move("R", filename)
+    def handleKey(self, key, keys, players, filename = 'config.yml'):
+        if self.alive:
+            if key is getattr(pygame, keys["up"]):
+                self.move("U", filename)
+            if key is getattr(pygame, keys["down"]):
+                self.move("D", filename)
+            if key is getattr(pygame, keys["left"]):
+                self.move("L", filename)
+            if key is getattr(pygame, keys["right"]):
+                self.move("R", filename)
+            if key is getattr(pygame, keys["attack"]):
+                to_attack = []
+                for pl in players:
+                    if pygame.math.Vector2.distance_to(pygame.math.Vector2(self.pos), pygame.math.Vector2(pl.pos)) <= Parser.get_range(filename, self.job) and pl is not self and pl.alive:
+                        to_attack.append(pl)
+                for player in to_attack:
+                    self.attack(player)
 
     def move(self, direction, filename):
         if direction is "U":
@@ -53,12 +62,13 @@ class Player:
                 self.pos[0] += self.speed
 
     def die(self):
-        self.color = (255, 255, 255)
+        self.alive = False
 
     def update(self, screen):
-        if self.health <= 0:
-            self.die()
-        self.render(screen)
+        if self.alive:
+            if self.health <= 0:
+                self.die()
+            self.render(screen)
 
 class Knight(Player):
     def __init__(self, filename, name, pos):

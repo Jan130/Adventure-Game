@@ -1,6 +1,7 @@
 Jobs:
   Knight:
     Health: 150
+    Range: 30
     Weapons:
       1:
         name: Basic Sword
@@ -22,6 +23,7 @@ Jobs:
         damage: 70
   Archer:
     Health: 80
+    Range: 150
     Weapons:
       1:
         name: Basic Bow
@@ -43,6 +45,7 @@ Jobs:
         damage: 70
   Magician:
     Health: 100
+    Range: 70
     Weapons:
       1:
         name: Basic Wand
@@ -70,3 +73,4 @@ Keys:
   down: s
   left: a
   right: d
+  attack: SPACE
