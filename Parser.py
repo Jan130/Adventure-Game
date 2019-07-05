@@ -33,3 +33,7 @@ def get_keys(filename):
 def get_range(filename, job):
     input = get_config(filename)
     return input["Jobs"][job]["Range"]
+
+def get_image(filename, job):
+    input = get_config(filename)
+    return input["Jobs"][job]["Image"]

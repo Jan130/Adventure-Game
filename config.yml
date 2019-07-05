@@ -1,7 +1,8 @@
 Jobs:
   Knight:
+    Image: Knight.png
     Health: 150
-    Range: 30
+    Range: 60
     Weapons:
       1:
         name: Basic Sword
@@ -22,6 +23,7 @@ Jobs:
         name: Excalibur
         damage: 70
   Archer:
+    Image: Archer.png
     Health: 80
     Range: 150
     Weapons:
@@ -44,6 +46,7 @@ Jobs:
         name: Robin Hood's Bow
         damage: 70
   Magician:
+    Image: Magician.png
     Health: 100
     Range: 70
     Weapons:

@@ -13,20 +13,18 @@ def main():
     clock = pygame.time.Clock()
     pygame.key.set_repeat(1, 30)
 
-    player = Player.Archer(config, "Test Archer", [400, 300])
+    player = Player.Archer(config, "Test Archer", [400, 300], "Player")
     player2 = Player.Knight(config, "Test Knight", [100, 100])
+    player3 = Player.Magician(config, "Test Magician", [500, 500])
 
-    players = [player, player2]
-
-
+    players = [player, player2, player3]
 
     keys = Parser.get_keys(config)
 
     running = True
     while running:
 
-        clock.tick(30)
-
+        clock.tick(60)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -42,7 +40,7 @@ def main():
         screen.fill((255, 255, 255))
 
         for pl in players:
-            pl.update(screen)
+            pl.update(screen, players)
 
         pygame.display.flip()
 
